@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{7E605F91-06B0-4E62-A2CD-CD081AB3B1F8}">
+  DTS:VersionBuild="42"
+  DTS:VersionGUID="{19428B1D-09BE-4524-8EAB-56E8BDC46F9B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -26,6 +26,52 @@
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
           DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\Downloads\Global_Superstore2.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{69D5D28C-7113-4C39-85F4-45F567A49E9A}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=H:\HK7\Data warehouse\Global_Superstore2.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AA3408BF-F356-4D23-A188-DDE202F35B7E}"
+      DTS:ObjectName="LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-DVAMMJI7\SQLEXPRESS;User ID=minhquang;Initial Catalog=WH_SuperStore2;Provider=SQLNCLI11.1;Application Name=SSIS-Package-{AA3408BF-F356-4D23-A188-DDE202F35B7E}LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYfWu8TvWV0e3b8gb4lGlzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACBUO1pyw8htURsjvVuoUMa5i747/uu0LjsMmV1CpMpfQAAAAAOgAAAAAIAACAAAAA+2tYqpSmjR4xJu60j50LKsk8atY80q4NFhUQof8jaECAAAADaICKBI1w4q7fKlfOnyu1MSGLr2+NPxipJAhXHR+jviEAAAAD9YxlOJ7+V5L/1xpwHzfuGfeIz6YSxcqpX+qHVcvIQcsZsyg1fLlPpM6Tgy6Fqsbws4vkBjrRuK1Mjc3l9tXCs</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{31247F17-4668-4137-B80E-3D56ED7865F9}"
+      DTS:ObjectName="LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-DVAMMJI7\SQLEXPRESS;User ID=minhquang;Initial Catalog=WH_SuperStore2;Provider=MSOLEDBSQL.1;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAYfWu8TvWV0e3b8gb4lGlzAAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABLbPEcmWYyL8416PMhhDWv/26jYfe2NKBHD1sBturx5wAAAAAOgAAAAAIAACAAAACSYej8g+SjwZlve3FP0g1Q7o89DEoAHM+zd22Cqck1MiAAAACAJuEIMto1QCw4ioqfSahOl6cF3jwdO7SO8IFQEchqpkAAAACLs+SlZaltrBlPe+xyrxWFHpWyWTlSFDdhXvcRluD8OVFXGf2QYU/pRb/pK1f3H4MUklzYwfg3mcevSHaYd7yS</DTS:Password>
+        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -57,6 +103,166 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Data Flow CustomerDIM\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow CustomerDIM\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow CustomerDIM\Aggregate.Inputs[Aggregate Input 1].Columns[Customer Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Customer Name"
+                      lineageId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Customer Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow CustomerDIM\Aggregate.Inputs[Aggregate Input 1].Columns[Customer ID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Customer ID"
+                      lineageId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Customer ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow CustomerDIM\Aggregate.Inputs[Aggregate Input 1].Columns[Segment]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Segment"
+                      lineageId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Segment]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Customer Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Customer Name]"
+                      name="Customer Name">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Customer Name]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Customer ID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Customer ID]"
+                      name="Customer ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Customer ID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Segment]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Segment]"
+                      name="Segment">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Segment]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Data Flow CustomerDIM\Excel Source"
               componentClassID="Microsoft.ExcelSource"
@@ -100,8 +306,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow CustomerDIM\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -634,13 +840,13 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[SegmentDIM]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_Segment]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[SegmentDIM]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_Segment]) [refTable]
 where [refTable].[Segment] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -651,7 +857,7 @@ where [refTable].[Segment] = ?</property>
                   dataType="System.Int32"
                   description="Specifies the cache type of the lookup table."
                   name="CacheType"
-                  typeConverter="CacheType">0</property>
+                  typeConverter="CacheType">1</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
@@ -677,7 +883,7 @@ where [refTable].[Segment] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Segment]};</property>
+                  name="ParameterMap">#{Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Segment]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -690,8 +896,8 @@ where [refTable].[Segment] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow CustomerDIM\Lookup.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
                   description="Connection manager used to access lookup data."
                   name="OleDbConnection" />
               </connections>
@@ -705,7 +911,7 @@ where [refTable].[Segment] = ?</property>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Segment"
-                      lineageId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Segment]">
+                      lineageId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Segment]">
                       <properties>
                         <property
                           dataType="System.String"
@@ -795,7 +1001,7 @@ where [refTable].[Segment] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[OLE DB Destination]</property>
+                  name="OpenRowset">[DIM_Customer]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -838,8 +1044,8 @@ where [refTable].[Segment] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow CustomerDIM\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -857,14 +1063,14 @@ where [refTable].[Segment] = ?</property>
                       cachedLength="255"
                       cachedName="Customer ID"
                       externalMetadataColumnId="Package\Data Flow CustomerDIM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer ID]"
-                      lineageId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Customer ID]" />
+                      lineageId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Customer ID]" />
                     <inputColumn
                       refId="Package\Data Flow CustomerDIM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Customer Name]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Customer Name"
                       externalMetadataColumnId="Package\Data Flow CustomerDIM\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Customer Name]"
-                      lineageId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output].Columns[Customer Name]" />
+                      lineageId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1].Columns[Customer Name]" />
                     <inputColumn
                       refId="Package\Data Flow CustomerDIM\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SegmentID]"
                       cachedDataType="i4"
@@ -919,8 +1125,13 @@ where [refTable].[Segment] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\Data Flow CustomerDIM.Paths[Excel Source Output]"
+              refId="Package\Data Flow CustomerDIM.Paths[Aggregate Output 1]"
               endId="Package\Data Flow CustomerDIM\Lookup.Inputs[Lookup Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow CustomerDIM\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow CustomerDIM.Paths[Excel Source Output]"
+              endId="Package\Data Flow CustomerDIM\Aggregate.Inputs[Aggregate Input 1]"
               name="Excel Source Output"
               startId="Package\Data Flow CustomerDIM\Excel Source.Outputs[Excel Source Output]" />
             <path
@@ -1246,8 +1457,8 @@ where [refTable].[Segment] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow LocationDIM\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1782,7 +1993,7 @@ where [refTable].[Segment] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[LocationDIM]</property>
+                  name="OpenRowset">[DIM_Location]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1825,8 +2036,8 @@ where [refTable].[Segment] = ?</property>
               <connections>
                 <connection
                   refId="Package\Data Flow LocationDIM\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1983,9 +2194,10 @@ where [refTable].[Segment] = ?</property>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SC_ca175de43fe946a0a67211a5bb0a42bb</RootNamespace>
     <AssemblyName>SC_ca175de43fe946a0a67211a5bb0a42bb</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2302,6 +2514,7 @@ public class ScriptMain : UserComponent
         /*
          * Add your code here
          */
+        count++;
         Row.LocationID = count;
     }
 
@@ -2477,23 +2690,23 @@ public class Variables
                       dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
   <msb:PropertyGroup>
-    <msb:Language>msBuild</msb:Language>
     <msb:CodeName>SC_ca175de43fe946a0a67211a5bb0a42bb</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_ca175de43fe946a0a67211a5bb0a42bb</msb:DisplayName>
-    <msb:ProjectId>{ADE795B7-9775-4EA5-AB25-ABF82C14C0F3}</msb:ProjectId>
+    <msb:ProjectId>{C9AB8C41-1E92-4A65-A124-7621E3976FB5}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_ca175de43fe946a0a67211a5bb0a42bb.csproj" />
     <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
     <msb:File Include="Properties\Resources.Designer.cs" />
-    <msb:File Include="main.cs" />
-    <msb:File Include="BufferWrapper.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
-    <msb:File Include="ComponentWrapper.cs" />
   </msb:ItemGroup>
 </c:Project>]]></arrayElement>
                     <arrayElement
@@ -2629,90 +2842,90 @@ namespace SC_ca175de43fe946a0a67211a5bb0a42bb.Properties {
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAK7/9WYAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAEjEA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAF+092YAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAGjEA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMAwAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMgwAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAGBEAAAAgAAAAEgAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAIBEAAAAgAAAAEgAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD0
-MAAAAAAAAEgAAAACAAUAkCEAAHgOAAABAAAAAAAAAAgwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACio2AwJ7AQAABG8GAAAGKh4CKAoA
-AAYqKgIDBAUoEgAACio6AhYDjBoAAAEoEwAACipaAywIAhYoFAAACipyAQAAcHMVAAAKeh4CKBYA
-AAoqHgIoFwAACip+AigYAAAKAgJzDgAABn0CAAAEAgJzDwAABn0DAAAEKpIEcp4AAHAabxkAAAos
-FQIFAgMoGgAACg4EcwUAAAZvDAAABipKKwcCA28NAAAGA28IAAAGLfEqBio6AigbAAAKAgN9BAAA
-BCo6AigbAAAKAgN9BQAABCoeAigbAAAKKq5+BgAABC0ecq4AAHDQBwAAAigcAAAKbx0AAApzHgAA
-CoAGAAAEfgYAAAQqGn4HAAAEKh4CgAcAAAQqGn4IAAAEKh4CKB8AAAoqLnMVAAAGgAgAAAQqAAAA
-QlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAJAUAACN+AACQBQAAJAYAACNTdHJp
-bmdzAAAAALQLAAAgAQAAI1VTANQMAAAQAAAAI0dVSUQAAADkDAAAlAEAACNCbG9iAAAAAAAAAAIA
-AAFXFaABCQEAAAD6ATMAFgAAAQAAACAAAAAIAAAACAAAABYAAAAPAAAAHwAAABAAAAADAAAABQAA
-AAYAAAABAAAABAAAAAEAAAAAAP8CAQAAAAAABgD5AVQEBgCNAlQEBgBFAUEEDwDIBAAABgByAZYD
-BgDcAZYDBgC9AZYDBgB0ApYDBgAZApYDBgAyApYDBgCJAZYDBgCkAcgCCgBNApIACgATBJIADgAE
-BJIACgDfA5IACgCOBZIABgBRBU4DBgAoAUEEBgAkBHQEBgDTA4EDEgD4AOkCEgBZAekCEgDgAGwD
-BgANAVQEBgABAE4DBgCoA04DBgDiAk4DBgDCA04DBgCzAE4DBgBkAE4DBgAZBpYDAAAAAAcAAAAA
-AAEAAQABABAAYQMAABAAAQABAAEAEAD3AwAAOQACAAUAAQAQAHAFAABFAAIACgABABAARQUAAEkA
-BAAOAAEAEAAGBQAASQAFAA8AAAAQAHsE1wRJAAYAEAAAARAANQXXBGEACAAUAAEAngVjAAYARQVm
-AAYABgVqAAEAfgVuAAEAfgVuABEAVQNyABEA0AB2ABEAVAB6AFAgAAAAAMYAqwIGAAEAWCAAAAAA
-xgC2AgYAAQBgIAAAAADGAPYFfgABAG4gAAAAAIYYNAQGAAIAdiAAAAAAhhg0BBsAAgCBIAAAAACG
-CBAAAQAFAJAgAAAAAIYIJwOEAAYApyAAAAAAhgANBisABwCvIAAAAACGAFgFKwAHALcgAAAAAIYY
-NAQGAAcA1yAAAAAAxgDpBYkABwD8IAAAAADGAeIFfgALAA8hAAAAAMYB9gV+AAwAESEAAAAAhhg0
-BJMADQAgIQAAAACGGDQEkwAOAC8hAAAAAIMYNAQGAA8ANyEAAAAAkwggBJkADwBjIQAAAACTCLgA
-ngAPAGohAAAAAJMIxACjAA8AciEAAAAAlghkBakAEAB5IQAAAACGGDQEBgAQAIEhAAAAAJEYOgSu
-ABAAAAABABEGAAABABkEAAACABAFAAADAO0DAAABAMICAAABAMICAAABAB8AAAACAIgAAAADABkE
-AAAEAO0DAAABABkEAAABABEGAAABAJQFAAABAJQFAAABAMICCQA0BAEAEQA0BAYAGQA0BAoAKQA0
-BBAAMQA0BBAAOQA0BBAAQQA0BBAASQA0BBAAUQA0BBAAWQA0BBAAYQA0BBAAaQA0BAYAmQA0BAYA
-uQA0BBUAyQA0BAYAiQCrAgYAiQC2AgYAcQA0BBsAcQBFAyUAcQA9AwEA2QA0BBAAcQANBisAcQBY
-BSsAiQA0BAYA4QA+BS8AiQAkBTYAkQA0BAYA8QB2ADwA8QAVBkMAoQA0BEkAwQA0BAYALgALAMkA
-LgATANIALgAbAPEALgAjAPoALgArACMBLgAzACMBLgA7ACMBLgBDAPoALgBLACkBLgBTACMBLgBb
-AEABQwBjAI4BaQBzAPEAiQBzAPEA4wBrAI4BAQF7AI4BAwABAAcAAwAIAAUAAAAUALIAAAArA7YA
-AAAkBLoAAADYAL8AAABoBcQAAQAGAAMAAQAHAAUAAgARAAcAAgASAAkAAQATAAkAAgAUAAsABIAA
-AAEAAAAAAAAAAAAAAAAAJwAAAAQAAAAAAAAAAAAAAFEASwAAAAAAEAAAAAAAAAAAAAAAWgCkBQAA
-AAAQAAAAAAAAAAAAAABaAMEFAAAAAAQAAAAAAAAAAAAAAFEATgMAAAAAAAAAAAEAAACFBAAAAAAA
-SW50MzIAPE1vZHVsZT4Ac2V0X0xvY2F0aW9uSUQASW5wdXRJRABTQ19jYTE3NWRlNDNmZTk0NmEw
-YTY3MjExYTViYjBhNDJiYgBtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVudGltZVR5cGVIYW5k
-bGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBp
-cGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxp
-Y2F0aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVk
-QXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0
-ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJs
-eVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25m
-aWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRp
-b25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlD
-b3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUA
-QXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFBy
-ZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBTdHJp
-bmcAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDX2NhMTc1ZGU0M2ZlOTQ2YTBhNjcyMTFhNWJiMGE0
-MmJiLmRsbABzZXRfTG9jYXRpb25JRF9Jc051bGwAU2V0TnVsbABzZXRfSXRlbQBTeXN0ZW0AcmVz
-b3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0ZW0uR2xvYmFsaXph
-dGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0aW9uAFN0cmluZ0Nv
-bXBhcmlzb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAASW5wdXQwQnVmZmVy
-AFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5j
-Y3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBT
-eXN0ZW0uUmVzb3VyY2VzAFNDX2NhMTc1ZGU0M2ZlOTQ2YTBhNjcyMTFhNWJiMGE0MmJiLlByb3Bl
-cnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ19jYTE3NWRlNDNmZTk0
-NmEwYTY3MjExYTViYjBhNDJiYi5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1bW5JbmRl
-eGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9iamVjdABF
-bmRPZlJvd3NldABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3Jp
-cHRDb21wb25lbnQAY291bnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQu
-U3FsU2VydmVyLlBpcGVsaW5lSG9zdABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9jZXNz
-SW5wdXRSb3cATmV4dFJvdwBnZXRfQXNzZW1ibHkAAAAAgJtJAHMATgB1AGwAbAAgAHAAcgBvAHAA
-ZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0AG8AIABGAGEAbABzAGUALgAg
-AEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQAaABlACAAYwBvAGwAdQBtAG4A
-IABpAG4AcwB0AGUAYQBkAC4AAA9JAG4AcAB1AHQAIAAwAABxUwBDAF8AYwBhADEANwA1AGQAZQA0
-ADMAZgBlADkANAA2AGEAMABhADYANwAyADEAMQBhADUAYgBiADAAYQA0ADIAYgBiAC4AUAByAG8A
-cABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAACtZWwnu7QWQrolQKlY4y87AAQgAQEI
-AyAAAQUgAQEREQQgAQEOBSABARFZCSADARI9HQgSQQUgAgEIHAMgAAIGIAICDhF1BSABHQgIBgAB
-EnkRfQUgABKAgQcgAgEOEoCBCLd6XFYZNOCJCImEXc2AgMyRAgYIAwYSFAMGEhgDBhJFAwYSUQMG
-ElUDBhIgBSABARIMBCABAQIJIAQBCA4SPRJBBSABARJFBAAAElEEAAASVQUAAQESVQQAABIgAwAA
-AQMoAAgDKAACBAgAElEECAASVQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9u
-VGhyb3dzAQgBAAIAAAAAACgBACNTQ19jYTE3NWRlNDNmZTk0NmEwYTY3MjExYTViYjBhNDJiYgAA
-BQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDI0AABNAQAcLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0
-LjcuMgEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUULk5FVCBGcmFtZXdvcmsgNC43LjIEAQAAAAC0
-AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGli
-LCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVj
-NTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAA
-AFBBRFBBRFC0AAAA6DAAAAAAAAAAAAAAAjEAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPQwAAAA
-AAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD8
+MAAAAAAAAEgAAAACAAUAnCEAAHQOAAABAAAAAAAAABAwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACipuAgJ7AQAABBdYfQEAAAQDAnsB
+AAAEbwYAAAYqHgIoCgAABioqAgMEBSgSAAAKKjoCFgOMGgAAASgTAAAKKloDLAgCFigUAAAKKnIB
+AABwcxUAAAp6HgIoFgAACioeAigXAAAKKn4CKBgAAAoCAnMOAAAGfQIAAAQCAnMPAAAGfQMAAAQq
+kgRyngAAcBpvGQAACiwVAgUCAygaAAAKDgRzBQAABm8MAAAGKkorBwIDbw0AAAYDbwgAAAYt8SoG
+KjoCKBsAAAoCA30EAAAEKjoCKBsAAAoCA30FAAAEKh4CKBsAAAoqrn4GAAAELR5yrgAAcNAHAAAC
+KBwAAApvHQAACnMeAAAKgAYAAAR+BgAABCoafgcAAAQqHgKABwAABCoafggAAAQqHgIoHwAACiou
+cxUAAAaACAAABCoAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAJAUAACN+AACQ
+BQAAJAYAACNTdHJpbmdzAAAAALQLAAAgAQAAI1VTANQMAAAQAAAAI0dVSUQAAADkDAAAkAEAACNC
+bG9iAAAAAAAAAAIAAAFXFaABCQEAAAD6ATMAFgAAAQAAACAAAAAIAAAACAAAABYAAAAPAAAAHwAA
+ABAAAAADAAAABQAAAAYAAAABAAAABAAAAAEAAAAAAP8CAQAAAAAABgD5AVQEBgCNAlQEBgBFAUEE
+DwDIBAAABgByAZYDBgDcAZYDBgC9AZYDBgB0ApYDBgAZApYDBgAyApYDBgCJAZYDBgCkAcgCCgBN
+ApIACgATBJIADgAEBJIACgDfA5IACgCOBZIABgBRBU4DBgAoAUEEBgAkBHQEBgDTA4EDEgD4AOkC
+EgBZAekCEgDgAGwDBgANAVQEBgABAE4DBgCoA04DBgDiAk4DBgDCA04DBgCzAE4DBgBkAE4DBgAZ
+BpYDAAAAAAcAAAAAAAEAAQABABAAYQMAABAAAQABAAEAEAD3AwAAOQACAAUAAQAQAHAFAABFAAIA
+CgABABAARQUAAEkABAAOAAEAEAAGBQAASQAFAA8AAAAQAHsE1wRJAAYAEAAAARAANQXXBGEACAAU
+AAEAngVjAAYARQVmAAYABgVqAAEAfgVuAAEAfgVuABEAVQNyABEA0AB2ABEAVAB6AFAgAAAAAMYA
+qwIGAAEAWCAAAAAAxgC2AgYAAQBgIAAAAADGAPYFfgABAHwgAAAAAIYYNAQGAAIAhCAAAAAAhhg0
+BBsAAgCPIAAAAACGCBAAAQAFAJ4gAAAAAIYIJwOEAAYAtSAAAAAAhgANBisABwC9IAAAAACGAFgF
+KwAHAMUgAAAAAIYYNAQGAAcA5SAAAAAAxgDpBYkABwAKIQAAAADGAeIFfgALAB0hAAAAAMYB9gV+
+AAwAHyEAAAAAhhg0BJMADQAuIQAAAACGGDQEkwAOAD0hAAAAAIMYNAQGAA8ARSEAAAAAkwggBJkA
+DwBxIQAAAACTCLgAngAPAHghAAAAAJMIxACjAA8AgCEAAAAAlghkBakAEACHIQAAAACGGDQEBgAQ
+AI8hAAAAAJEYOgSuABAAAAABABEGAAABABkEAAACABAFAAADAO0DAAABAMICAAABAMICAAABAB8A
+AAACAIgAAAADABkEAAAEAO0DAAABABkEAAABABEGAAABAJQFAAABAJQFAAABAMICCQA0BAEAEQA0
+BAYAGQA0BAoAKQA0BBAAMQA0BBAAOQA0BBAAQQA0BBAASQA0BBAAUQA0BBAAWQA0BBAAYQA0BBAA
+aQA0BAYAmQA0BAYAuQA0BBUAyQA0BAYAiQCrAgYAiQC2AgYAcQA0BBsAcQBFAyUAcQA9AwEA2QA0
+BBAAcQANBisAcQBYBSsAiQA0BAYA4QA+BS8AiQAkBTYAkQA0BAYA8QB2ADwA8QAVBkMAoQA0BEkA
+wQA0BAYALgALAMkALgATANIALgAbAPEALgAjAPoALgArACMBLgAzACMBLgA7ACMBLgBDAPoALgBL
+ACkBLgBTACMBLgBbAEABQwBjAIoBaQBzAPEAiQBzAPEA4wBrAIoBAQF7AIoBAwABAAcAAwAIAAUA
+AAAUALIAAAArA7YAAAAkBLoAAADYAL8AAABoBcQAAQAGAAMAAQAHAAUAAgARAAcAAgASAAkAAQAT
+AAkAAgAUAAsABIAAAAEAAAAAAAAAAAAAAAAAJwAAAAQAAAAAAAAAAAAAAFEASwAAAAAAEAAAAAAA
+AAAAAAAAWgCkBQAAAAAQAAAAAAAAAAAAAABaAMEFAAAAAAQAAAAAAAAAAAAAAFEATgMAAAAAAAAA
+AAEAAACFBAAAAAAASW50MzIAPE1vZHVsZT4Ac2V0X0xvY2F0aW9uSUQASW5wdXRJRABTQ19jYTE3
+NWRlNDNmZTk0NmEwYTY3MjExYTViYjBhNDJiYgBtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVu
+dGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxT
+ZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VD
+dWx0dXJlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBp
+bGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdn
+YWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJp
+YnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUA
+QXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1
+dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1
+dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9p
+bnRBdHRyaWJ1dGUAQXNzZW1ibHlDb21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5
+QXR0cmlidXRlAFByZUV4ZWN1dGUAUG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVy
+c2lvbmluZwBTdHJpbmcAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDX2NhMTc1ZGU0M2ZlOTQ2YTBh
+NjcyMTFhNWJiMGE0MmJiLmRsbABzZXRfTG9jYXRpb25JRF9Jc051bGwAU2V0TnVsbABzZXRfSXRl
+bQBTeXN0ZW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBTeXN0
+ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhjZXB0
+aW9uAFN0cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAA
+SW5wdXQwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5h
+Z2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGls
+ZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNDX2NhMTc1ZGU0M2ZlOTQ2YTBhNjcyMTFhNWJi
+MGE0MmJiLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ19j
+YTE3NWRlNDNmZTk0NmEwYTY3MjExYTViYjBhNDJiYi5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZm
+ZXJDb2x1bW5JbmRleGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rp
+b25zAE9iamVjdABFbmRPZlJvd3NldABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENv
+bXBvbmVudABTY3JpcHRDb21wb25lbnQAY291bnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlw
+dABNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9zdABJbnB1dDBfUHJvY2Vzc0lucHV0AElu
+cHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4dFJvdwBnZXRfQXNzZW1ibHkAAAAAgJtJAHMATgB1AGwA
+bAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQAIAB0AG8AIABG
+AGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAgAHQAaABlACAA
+YwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AAA9JAG4AcAB1AHQAIAAwAABxUwBDAF8AYwBh
+ADEANwA1AGQAZQA0ADMAZgBlADkANAA2AGEAMABhADYANwAyADEAMQBhADUAYgBiADAAYQA0ADIA
+YgBiAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAABJJh+LJGG/RaSW
+FkNabn3TAAQgAQEIAyAAAQUgAQEREQQgAQEOBSABARFZCSADARI9HQgSQQUgAgEIHAMgAAIGIAIC
+DhF1BSABHQgIBgABEnkRfQUgABKAgQcgAgEOEoCBCLd6XFYZNOCJCImEXc2AgMyRAgYIAwYSFAMG
+EhgDBhJFAwYSUQMGElUDBhIgBSABARIMBCABAQIJIAQBCA4SPRJBBSABARJFBAAAElEEAAASVQUA
+AQESVQQAABIgAwAAAQMoAAgDKAACBAgAElEECAASVQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFw
+Tm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ19jYTE3NWRlNDNmZTk0NmEwYTY3MjEx
+YTViYjBhNDJiYgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDI0AABJAQAaLk5FVEZyYW1ld29y
+ayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQu
+NwQBAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwg
+bXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
+bj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAA
+AAAAAAAAAAAAUEFEUEFEULQAAADwMAAAAAAAAAAAAAAKMQAAACAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAA/DAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -2743,7 +2956,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAABQxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAABwxAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -2989,8 +3202,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               <connections>
                 <connection
                   refId="Package\Data Flow SegmentDIM\Excel Source.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3525,7 +3738,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[SegmentDIM]</property>
+                  name="OpenRowset">[DIM_Segment]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -3568,8 +3781,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
               <connections>
                 <connection
                   refId="Package\Data Flow SegmentDIM\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
-                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-FJSSHRIH\SQLEXPRESS.testdatabase]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-DVAMMJI7\SQLEXPRESS.WH_SuperStore2.minhquang 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4085,9 +4298,10 @@ namespace SC_24a4a6b0145b4563920ba4ec45871bfa.Properties {
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SC_24a4a6b0145b4563920ba4ec45871bfa</RootNamespace>
     <AssemblyName>SC_24a4a6b0145b4563920ba4ec45871bfa</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -4164,23 +4378,23 @@ namespace SC_24a4a6b0145b4563920ba4ec45871bfa.Properties {
                       dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
-<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
   <msb:PropertyGroup>
-    <msb:Language>msBuild</msb:Language>
     <msb:CodeName>SC_24a4a6b0145b4563920ba4ec45871bfa</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_24a4a6b0145b4563920ba4ec45871bfa</msb:DisplayName>
-    <msb:ProjectId>{6145B37F-6DFA-4E36-89C0-EBC74B5237FA}</msb:ProjectId>
+    <msb:ProjectId>{0A6C4A14-2F52-4F18-8EB6-F6EA1ECFDF38}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_24a4a6b0145b4563920ba4ec45871bfa.csproj" />
     <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
     <msb:File Include="Properties\Resources.resx" />
-    <msb:File Include="main.cs" />
-    <msb:File Include="BufferWrapper.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
-    <msb:File Include="ComponentWrapper.cs" />
   </msb:ItemGroup>
 </c:Project>]]></arrayElement>
                     <arrayElement
@@ -4316,14 +4530,14 @@ namespace SC_24a4a6b0145b4563920ba4ec45871bfa.Properties {
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAB179WYAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAGjEA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAMa092YAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAFjEA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMgwAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMQwAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAIBEAAAAgAAAAEgAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAHBEAAAAgAAAAEgAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD8
-MAAAAAAAAEgAAAACAAUAnCEAAHQOAAABAAAAAAAAABAwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD4
+MAAAAAAAAEgAAAACAAUAnCEAAHAOAAABAAAAAAAAAAwwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACipuAgJ7AQAABBdYfQEAAAQDAnsB
 AAAEbwYAAAYqHgIoCgAABioqAgMEBSgSAAAKKjoCFgOMGgAAASgTAAAKKloDLAgCFigUAAAKKnIB
 AABwcxUAAAp6HgIoFgAACioeAigXAAAKKn4CKBgAAAoCAnMOAAAGfQIAAAQCAnMPAAAGfQMAAAQq
@@ -4331,7 +4545,7 @@ kgRyngAAcBpvGQAACiwVAgUCAygaAAAKDgRzBQAABm8MAAAGKkorBwIDbw0AAAYDbwgAAAYt8SoG
 KjoCKBsAAAoCA30EAAAEKjoCKBsAAAoCA30FAAAEKh4CKBsAAAoqrn4GAAAELR5yrgAAcNAHAAAC
 KBwAAApvHQAACnMeAAAKgAYAAAR+BgAABCoafgcAAAQqHgKABwAABCoafggAAAQqHgIoHwAACiou
 cxUAAAaACAAABCoAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAJAUAACN+AACQ
-BQAAIAYAACNTdHJpbmdzAAAAALALAAAgAQAAI1VTANAMAAAQAAAAI0dVSUQAAADgDAAAlAEAACNC
+BQAAIAYAACNTdHJpbmdzAAAAALALAAAgAQAAI1VTANAMAAAQAAAAI0dVSUQAAADgDAAAkAEAACNC
 bG9iAAAAAAAAAAIAAAFXFaABCQEAAAD6ATMAFgAAAQAAACAAAAAIAAAACAAAABYAAAAPAAAAHwAA
 ABAAAAADAAAABQAAAAYAAAABAAAABAAAAAEAAAAAAP4CAQAAAAAABgD4AVIEBgCMAlIEBgBEAT8E
 DwDGBAAABgBxAZQDBgDbAZQDBgC8AZQDBgBzApQDBgAYApQDBgAxApQDBgCIAZQDBgCjAccCCgBM
@@ -4351,7 +4565,7 @@ BAYAGQAyBAoAKQAyBBAAMQAyBBAAOQAyBBAAQQAyBBAASQAyBBAAUQAyBBAAWQAyBBAAYQAyBBAA
 aQAyBAYAmQAyBAYAuQAyBBUAyQAyBAYAiQCqAgYAiQC1AgYAcQAyBBsAcQBDAyUAcQA7AwEA2QAy
 BBAAcQALBisAcQBWBSsAiQAyBAYA4QA8BS8AiQAiBTYAkQAyBAYA8QB1ADwA8QATBkMAoQAyBEkA
 wQAyBAYALgALAMkALgATANIALgAbAPEALgAjAPoALgArACMBLgAzACMBLgA7ACMBLgBDAPoALgBL
-ACkBLgBTACMBLgBbAEABQwBjAI4BaQBzAPEAiQBzAPEA4wBrAI4BAQF7AI4BAwABAAcAAwAIAAUA
+ACkBLgBTACMBLgBbAEABQwBjAIoBaQBzAPEAiQBzAPEA4wBrAIoBAQF7AIoBAwABAAcAAwAIAAUA
 AAAUALIAAAAqA7YAAAAiBLoAAADXAL8AAABmBcQAAQAGAAMAAQAHAAUAAgARAAcAAgASAAkAAQAT
 AAkAAgAUAAsABIAAAAEAAAAAAAAAAAAAAAAAJgAAAAQAAAAAAAAAAAAAAFEASgAAAAAAEAAAAAAA
 AAAAAAAAWgCiBQAAAAAQAAAAAAAAAAAAAABaAL8FAAAAAAQAAAAAAAAAAAAAAFEATAMAAAAAAAAA
@@ -4387,19 +4601,19 @@ cAByAG8AcABlAHIAdAB5ACAAYwBhAG4AbgBvAHQAIABiAGUAIABzAGUAdAAgAHQAbwAgAEYAYQBs
 AHMAZQAuACAAQQBzAHMAaQBnAG4AIABhACAAdgBhAGwAdQBlACAAdABvACAAdABoAGUAIABjAG8A
 bAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQALgAAD0kAbgBwAHUAdAAgADAAAHFTAEMAXwAyADQAYQA0
 AGEANgBiADAAMQA0ADUAYgA0ADUANgAzADkAMgAwAGIAYQA0AGUAYwA0ADUAOAA3ADEAYgBmAGEA
-LgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAEvSfblhyAFHsu2C7nLL
-UxUABCABAQgDIAABBSABARERBCABAQ4FIAEBEVkJIAMBEj0dCBJBBSACAQgcAyAAAgYgAgIOEXUF
+LgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMAAFe9JbMQBjVPopPFasR+
+78wABCABAQgDIAABBSABARERBCABAQ4FIAEBEVkJIAMBEj0dCBJBBSACAQgcAyAAAgYgAgIOEXUF
 IAEdCAgGAAESeRF9BSAAEoCBByACAQ4SgIEIt3pcVhk04IkIiYRdzYCAzJECBggDBhIUAwYSGAMG
 EkUDBhJRAwYSVQMGEiAFIAEBEgwEIAEBAgkgBAEIDhI9EkEFIAEBEkUEAAASUQQAABJVBQABARJV
 BAAAEiADAAABAygACAMoAAIECAASUQQIABJVBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25F
 eGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzI0YTRhNmIwMTQ1YjQ1NjM5MjBiYTRlYzQ1
-ODcxYmZhAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjQAAE0BABwuTkVURnJhbWV3b3JrLFZl
-cnNpb249djQuNy4yAQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRQuTkVUIEZyYW1ld29yayA0Ljcu
-MgQBAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwg
-bXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-bj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAA
-AAAAAAAAAAAAUEFEUEFEULQAAADwMAAAAAAAAAAAAAAKMQAAACAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAA/DAAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAA
+ODcxYmZhAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjQAAEkBABouTkVURnJhbWV3b3JrLFZl
+cnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43BAEA
+AAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2Nv
+cmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
+N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAA
+AAAAAABQQURQQURQtAAAAOwwAAAAAAAAAAAAAAYxAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD4
+MAAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -4430,7 +4644,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAABwxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAABgxAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -4526,6 +4740,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{22541385-1EBB-4BB3-BD62-A2740BD4EBF1}"
+      DTS:From="Package\Data Flow SegmentDIM"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow CustomerDIM" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{56D6F083-A51D-4157-B920-916CA02CBB95}"
+      DTS:From="Package\Data Flow LocationDIM"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Data Flow SegmentDIM" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -4537,19 +4769,75 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="192.8,41.6"
           Id="Package\Data Flow CustomerDIM"
           TopLeft="13.8571426609949,24.5294118431303" />
         <NodeLayout
+          Size="186.4,41.6"
+          Id="Package\Data Flow LocationDIM"
+          TopLeft="136.428571718992,147.588235164751" />
+        <NodeLayout
           Size="190.4,41.6"
           Id="Package\Data Flow SegmentDIM"
           TopLeft="272.571428398088,28.1176471332262" />
-        <NodeLayout
-          Size="187.2,41.6"
-          Id="Package\Data Flow LocationDIM"
-          TopLeft="136.428571718992,147.588235164751" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="272.571428398088,47.1235294881782">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-65.9142857370931,0"
+              Start="0,0"
+              End="-58.4142857370931,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-58.4142857370931,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="229.628571718992,147.588235164751">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138.142856679096,-77.8705880315248"
+              Start="0,0"
+              End="138.142856679096,-70.3705880315248">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-34.9352940157624" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-34.9352940157624"
+                    Point2="0,-38.9352940157624"
+                    Point3="4,-38.9352940157624" />
+                  <mssgle:LineSegment
+                    End="134.142856679096,-38.9352940157624" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134.142856679096,-38.9352940157624"
+                    Point2="138.142856679096,-38.9352940157624"
+                    Point3="138.142856679096,-42.9352940157624" />
+                  <mssgle:LineSegment
+                    End="138.142856679096,-70.3705880315248" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -4572,42 +4860,92 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
           TopLeft="454,209" />
         <EdgeLayout
           Id="Package\Data Flow CustomerDIM.Paths[Lookup Match Output]"
-          TopLeft="306,227.5">
+          TopLeft="305.8,227.3">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="148,0"
+              EndConnector="148.2,0"
               Start="0,0"
-              End="140.5,0">
+              End="140.7,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="140.5,0" />
+                    End="140.7,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="22.05861328125,5,96.3827734375,11.609375"
+              BoundingBox="22.15861328125,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Data Flow CustomerDIM\Aggregate"
+          TopLeft="550.99999178946,102.99999846518" />
         <EdgeLayout
           Id="Package\Data Flow CustomerDIM.Paths[Excel Source Output]"
-          TopLeft="247.5,117">
+          TopLeft="315.2,95.8">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,87"
+              EndConnector="235.79999178946,27.9999984651804"
               Start="0,0"
-              End="0,79.5">
+              End="228.29999178946,27.9999984651804">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,79.5" />
+                    End="113.89999589473,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="113.89999589473,0"
+                    Point2="117.89999589473,0"
+                    Point3="117.89999589473,4" />
+                  <mssgle:LineSegment
+                    End="117.89999589473,23.9999984651804" />
+                  <mssgle:CubicBezierSegment
+                    Point1="117.89999589473,23.9999984651804"
+                    Point2="117.89999589473,27.9999984651804"
+                    Point3="121.89999589473,27.9999984651804" />
+                  <mssgle:LineSegment
+                    End="228.29999178946,27.9999984651804" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow CustomerDIM.Paths[Aggregate Output 1]"
+          TopLeft="614.19999178946,144.59999846518">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-364.79999178946,59.4000015348196"
+              Start="0,0"
+              End="-364.79999178946,51.9000015348196">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.7000007674098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.7000007674098"
+                    Point2="0,29.7000007674098"
+                    Point3="-4,29.7000007674098" />
+                  <mssgle:LineSegment
+                    End="-360.79999178946,29.7000007674098" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-360.79999178946,29.7000007674098"
+                    Point2="-364.79999178946,29.7000007674098"
+                    Point3="-364.79999178946,33.7000007674098" />
+                  <mssgle:LineSegment
+                    End="-364.79999178946,51.9000015348196" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4625,17 +4963,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[SegmentDIM]</Value>
+          type="q3:string">[dbo].[DIM_Segment]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4669,14 +5007,138 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Data Flow SegmentDIM">
+    design-time-name="Package\Data Flow LocationDIM">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="171.2,41.6"
-          Id="Package\Data Flow SegmentDIM\OLE DB Destination"
-          TopLeft="674,179" />
+          Size="138.4,41.6"
+          Id="Package\Data Flow LocationDIM\Excel Source"
+          TopLeft="83.9999987483024,25.9999996125698" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Data Flow LocationDIM\Script Component"
+          TopLeft="80.9999987930059,246.999996319413" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Data Flow LocationDIM\Aggregate"
+          TopLeft="83.9999987483024,123.999998152256" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow LocationDIM\OLE DB Destination"
+          TopLeft="463.999993085861,251.999996244907" />
+        <EdgeLayout
+          Id="Package\Data Flow LocationDIM.Paths[Output 0]"
+          TopLeft="243.399998793006,270.29999628216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="220.599994292855,0"
+              Start="0,0"
+              End="213.099994292855,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="213.099994292855,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow LocationDIM.Paths[Excel Source Output]"
+          TopLeft="150.199998748302,67.5999996125698">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.3999985396862"
+              Start="0,0"
+              End="0,48.8999985396862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.8999985396862" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow LocationDIM.Paths[Aggregate Output 1]"
+          TopLeft="147.199998748302,165.599998152256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.0000000447035,81.3999981671572"
+              Start="0,0"
+              End="15.0000000447035,73.8999981671572">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.6999990835786" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.6999990835786"
+                    Point2="0,40.6999990835786"
+                    Point3="4,40.6999990835786" />
+                  <mssgle:LineSegment
+                    End="11.0000000447035,40.6999990835786" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.0000000447035,40.6999990835786"
+                    Point2="15.0000000447035,40.6999990835786"
+                    Point3="15.0000000447035,44.6999990835786" />
+                  <mssgle:LineSegment
+                    End="15.0000000447035,73.8999981671572" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow LocationDIM\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow LocationDIM\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow SegmentDIM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="139.2,41.6"
           Id="Package\Data Flow SegmentDIM\Excel Source"
@@ -4689,28 +5151,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
           Size="163.2,41.6"
           Id="Package\Data Flow SegmentDIM\Script Component"
           TopLeft="414,174" />
-        <EdgeLayout
-          Id="Package\Data Flow SegmentDIM.Paths[Output 0]"
-          TopLeft="577,197.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="97,0"
-              Start="0,0"
-              End="89.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="89.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow SegmentDIM.Paths[Excel Source Output]"
           TopLeft="253.090909090909,108.590909090909">
@@ -4767,22 +5207,47 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow SegmentDIM\OLE DB Destination"
+          TopLeft="299.666650594109,250.766664961113" />
+        <EdgeLayout
+          Id="Package\Data Flow SegmentDIM.Paths[Output 0]"
+          TopLeft="495.6,215.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-110.333349405891,35.166664961113"
+              Start="0,0"
+              End="-110.333349405891,27.666664961113">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5833324805565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5833324805565"
+                    Point2="0,17.5833324805565"
+                    Point3="-4,17.5833324805565" />
+                  <mssgle:LineSegment
+                    End="-106.333349405891,17.5833324805565" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-106.333349405891,17.5833324805565"
+                    Point2="-110.333349405891,17.5833324805565"
+                    Point3="-110.333349405891,21.5833324805565" />
+                  <mssgle:LineSegment
+                    End="-110.333349405891,27.666664961113" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow SegmentDIM\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow SegmentDIM\Excel Source">
     <Properties>
@@ -4796,123 +5261,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Data Flow LocationDIM">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Data Flow LocationDIM\Excel Source"
-          TopLeft="83.9999987483024,25.9999996125698" />
-        <NodeLayout
-          Size="126.4,41.6"
-          Id="Package\Data Flow LocationDIM\Aggregate"
-          TopLeft="83.9999987483024,123.999998152256" />
-        <EdgeLayout
-          Id="Package\Data Flow LocationDIM.Paths[Excel Source Output]"
-          TopLeft="150.199998748302,67.5999996125698">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,56.3999985396862"
-              Start="0,0"
-              End="0,48.8999985396862">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,48.8999985396862" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\Data Flow LocationDIM\Script Component"
-          TopLeft="80.9999987930059,246.999996319413" />
-        <EdgeLayout
-          Id="Package\Data Flow LocationDIM.Paths[Aggregate Output 1]"
-          TopLeft="147.199998748302,165.599998152256">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="15.0000000447035,81.3999981671572"
-              Start="0,0"
-              End="15.0000000447035,73.8999981671572">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.6999990835786" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.6999990835786"
-                    Point2="0,40.6999990835786"
-                    Point3="4,40.6999990835786" />
-                  <mssgle:LineSegment
-                    End="11.0000000447035,40.6999990835786" />
-                  <mssgle:CubicBezierSegment
-                    Point1="11.0000000447035,40.6999990835786"
-                    Point2="15.0000000447035,40.6999990835786"
-                    Point3="15.0000000447035,44.6999990835786" />
-                  <mssgle:LineSegment
-                    End="15.0000000447035,73.8999981671572" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Data Flow LocationDIM\OLE DB Destination"
-          TopLeft="463.999993085861,251.999996244907" />
-        <EdgeLayout
-          Id="Package\Data Flow LocationDIM.Paths[Output 0]"
-          TopLeft="243.399998793006,270.29999628216">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="220.599994292855,0"
-              Start="0,0"
-              End="213.099994292855,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="213.099994292855,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow LocationDIM\Excel Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow LocationDIM\OLE DB Destination">
+    design-time-name="Package\Data Flow SegmentDIM\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
